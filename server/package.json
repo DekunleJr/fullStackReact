@@ -1,0 +1,21 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "Dekunle_jr",
+  "type": "commonjs",
+  "main": "index.js",
+  "engines": {
+    "node": "22.12.0",
+    "npm": "11.2.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
