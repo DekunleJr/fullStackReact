@@ -1,9 +1,10 @@
 const express = require("express");
+require("dotenv").config();
+require("./services/passport"); // Ensure this is imported to initialize passport strategies
+
 const app = express();
 
-app.get("/", (req, res) => {
-  res.send({ hi: "there" });
-});
+require("./routes/authRoutes")(app);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
