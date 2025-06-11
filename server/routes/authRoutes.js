@@ -14,4 +14,21 @@ module.exports = (app) => {
       res.redirect("/");
     }
   );
+
+  app.get("/api/current_user", (req, res) => {
+    res.send(req.user);
+  });
+
+  app.get("/session", (req, res) => {
+    res.send(req.session);
+  });
+  app.get("/api/logout", (req, res) => {
+    req.logout((err) => {
+      if (err) {
+        console.error("Logout error:", err);
+        return res.status(500).send("Logout failed");
+      }
+      res.redirect("/");
+    });
+  });
 };

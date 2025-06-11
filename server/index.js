@@ -1,6 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const cookieSession = require("cookie-session");
+const session = require("express-session");
 const passport = require("passport");
 require("dotenv").config();
 require("./models/user"); // Ensure the user model is registered with mongoose
@@ -11,9 +11,13 @@ const MONGO_URI = process.env.MONGO_URI;
 const app = express();
 
 app.use(
-  cookieSession({
-    maxAge: 24 * 60 * 60 * 1000, // 24 hours
-    keys: [process.env.COOKIE_KEY],
+  session({
+    secret: process.env.COOKIE_KEY,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      maxAge: 24 * 60 * 60 * 1000, // 24 hours
+    },
   })
 );
 app.use(passport.initialize());
